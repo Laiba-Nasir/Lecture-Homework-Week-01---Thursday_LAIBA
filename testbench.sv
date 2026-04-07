@@ -83,10 +83,10 @@ initial begin
     test_11(); #15;
 
     if (pass) begin
-        $display("all tests passed!");
+        $display("Tests Passed!");
     end else begin
-        $display("failed tests!!");
-        $display("# of failed tests: %0d", tests_failed);
+        $display("Failed tests");
+        $display("# of failed tests = ", tests_failed);
     end
 
 end
