@@ -35,6 +35,8 @@ task test_00();
         B = 0;
         #5;
         pass &= S == 0 & C == 0;
+        if (S != 0 || C != 0) tests_failed = tests_failed + 1;
+        
     end
 endtask
 
@@ -44,7 +46,8 @@ task test_01();
         A = 0;
         B = 1;
         #5;
-        pass &= S == 1 & C == 0;
+        pass &= S == 1 & C == 0; 
+        if (S != 1 || C != 0) tests_failed = tests_failed + 1;
         
     end
 endtask
@@ -56,6 +59,7 @@ task test_10();
         B = 0;
         #5;
         pass &= S == 1 & C == 0;
+        if (S != 1 || C != 0) tests_failed = tests_failed + 1;
     end
 endtask
 
@@ -66,6 +70,7 @@ task test_11 ();
         B = 1;
         #5;
         pass &= S == 0 & C == 1;
+        if (S != 0 || C != 1) tests_failed = tests_failed + 1;
     end
 endtask
 
@@ -78,9 +83,10 @@ initial begin
     test_11(); #15;
 
     if (pass) begin
-        $display("Tests Passed!");
+        $display("all tests passed!");
     end else begin
-        $display("Failed tests");
+        $display("failed tests!!");
+        $display("# of failed tests: %0d", tests_failed);
     end
 
 end

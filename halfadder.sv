@@ -13,5 +13,3 @@ assign c = a & b;
 endmodule
 
 
-
-
