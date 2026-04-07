@@ -1,3 +1,4 @@
+
 module halfadder(
     input a,
     input b,
@@ -6,5 +7,11 @@ module halfadder(
 );
 
 // Put your implementation of a halfadder goes here
+assign s = a ^ b;
+assign c = a & b;
 
 endmodule
+
+
+
+

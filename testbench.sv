@@ -13,6 +13,7 @@ reg pass;
 integer tests_failed;
 
 // Instantiate the unit under test
+halfadder uut(A, B, S, C);
 
 initial begin
     // Set up output to VCDD file
@@ -20,6 +21,11 @@ initial begin
     $dumpvars(0, testbench);
 
     // Initialize testbench variables
+    A = 1'b0; 
+    B = 1'b0; 
+    pass = 1'b1; // evereything passing so far 
+    tests_failed = 0; 
+
 end
 
 // Write Test Stimulus
@@ -35,18 +41,31 @@ endtask
 task test_01();
     begin
         // Put your test for A = 0, and B = 1
+        A = 0;
+        B = 1;
+        #5;
+        pass &= S == 1 & C == 0;
+        
     end
 endtask
 
 task test_10();
     begin
         // Put your test for A = 0, and B = 1
+        A = 1;
+        B = 0;
+        #5;
+        pass &= S == 1 & C == 0;
     end
 endtask
 
 task test_11 ();
     begin
         // Put your test for A = 0, and B = 1
+        A = 1;
+        B = 1;
+        #5;
+        pass &= S == 0 & C == 1;
     end
 endtask
 
